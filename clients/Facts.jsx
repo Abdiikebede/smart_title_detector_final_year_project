@@ -1,0 +1,145 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+#features {
+  scroll-margin-top:30px;
+}
+
+#how-it-works {
+  scroll-margin-top: 120px;
+}
+
+#about {
+  scroll-margin-top: 120px;
+}
+
+#contact {
+  scroll-margin-top: 80px;
+}
+
+.small-placeholder ::placeholder {
+  font-size: 13.5px !important;
+  color: #555;
+}
+.custom-input::placeholder {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.custom-input,
+.custom-select {
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-input:focus,
+.custom-select:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+  border-color: #0d6efd;
+}
+
+.custom-select {
+  font-size: 0.9rem;
+}
+
+.card {
+  background-color: #ffffff;
+}
+
+button.btn-primary {
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+button.btn-primary:hover {
+  background: linear-gradient(135deg, #0056d2, #003e9f);
+  transform: translateY(-1px);
+}
+
+
+/*  */
+table th {
+  background-color: #f8f9fa !important;
+  color: #333;
+  font-weight: 600;
+}
+
+.card ul li {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.badge {
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+/*  */
+.card ul li {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.bg-light {
+  background-color: #f1f1f1 !important;
+}
+/* General step circle styling */
+.step-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ffc107;
+  color: #1b1b1b;
+  font-weight: bold;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+
+
+/* Connect the circles with a line on desktop */
+@media (min-width: 992px) {
+  .process-section .step-item::after {
+    content: "";
+    position: absolute;
+    top: 30px; /* middle of the circle vertically */
+    left: 50%;
+    width: 100%;
+    height: 4px;
+    background-color: #f5dc91;
+    z-index: 1;
+  }
+
+  /* Remove the line from the last step */
+  .process-section .col-md-3:last-child .step-item::after {
+    display: none;
+  }
+
+  /* Slightly overlap to create a "chain" look */
+  .process-section .col-md-3 {
+    padding-right: 0;
+  }
+
+  .process-section .step-item {
+    position: relative;
+  }
+}
+
+/* On mobile — stack vertically and hide the line */
+@media (max-width: 991px) {
+  .process-section .step-item::after {
+    display: none;
+  }
+}

@@ -1,0 +1,63 @@
+import './App.css'
+import LandingPage from './Pages/LandingPage/LandingPage'
+import { Route, Routes } from 'react-router-dom'
+import LoginPage from './Pages/LoginPage/LoginPage'
+import RegisterPage from './Pages/RegisterPage/RegisterPage'
+import NotFound from './Pages/NotFound/NotFound'
+import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
+import StudentRoutes from './Routes/StudentRoutes/StudentRoutes'
+import Unauthorized from './Pages/Unauthorized/Unauthorized'
+import { PrivateRoute } from './Routes/PrivateRoute/PrivateRoute'
+import AdminRoute from './Routes/AdminRoute/AdminRoute'
+import SuperAdminRoute from "./Routes/SuperAdminRoute/SuperAdminRoute"
+import ForgotPassword from './Pages/ForgotPassword/ForgotPassword'
+import ResetPassword from './Pages/ResetPassword/ResetPassword'
+
+function App() {
+
+  return (
+    <>
+      <Routes>
+        <Route path='/' element={<LandingPage />}/>
+        <Route path='/register' element={<RegisterPage />}/>
+        <Route path='/login' element={<LoginPage />}/>
+        <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
+
+        <Route path="/student/*"  element={
+            <ProtectedRoute>
+              <PrivateRoute role={"student"}>
+                <StudentRoutes />
+              </PrivateRoute>
+            </ProtectedRoute>
+           }
+        />
+
+        {/* admin routes */}
+        <Route path='/admin/*'  element={
+          <ProtectedRoute>
+            <PrivateRoute role={"admin"}>
+              <AdminRoute />
+            </PrivateRoute>
+          </ProtectedRoute>
+           }
+        />
+
+        {/* super-admin routes */}
+        <Route path='/super-admin/*'  element={
+          <ProtectedRoute>
+            <PrivateRoute role={"superAdmin"}>
+              <SuperAdminRoute />
+            </PrivateRoute>
+          </ProtectedRoute>
+           }
+        />
+        
+      <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
+  )
+}
+
+export default App
